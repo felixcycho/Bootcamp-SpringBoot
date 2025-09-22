@@ -2,7 +2,9 @@ package com.bootcamp.demo.demo_sb_helloword;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 
 
 @Controller
@@ -12,5 +14,17 @@ public class HelloworldController {
   public String greeting() {
       return "hello world! welcome to bootcamp";
   }
+
+  @GetMapping(value = "/sum/{x}/{y}")
+  public Integer sum(@PathVariable Integer x, @PathVariable Integer y) {
+      return x + y;
+  }
+
+  // Integer, Double, String, Boolean
+  // BigDecimal, LocalDAte,
+
+  // input String name, int age
+  // return Person Object
+  
   
 }
