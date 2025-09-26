@@ -26,9 +26,6 @@ public class ShoppingMall {
       private String name;
       private LocalDate releaseDate;
 
-    
-
-
     }
   }
 }

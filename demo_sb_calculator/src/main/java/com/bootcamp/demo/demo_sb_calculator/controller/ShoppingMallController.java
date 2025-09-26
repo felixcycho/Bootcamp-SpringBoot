@@ -15,7 +15,6 @@ public class ShoppingMallController {
   @GetMapping("/shoppingmall")
   public ShoppingMall getShoppingMall() {
     Film film1 = Film.builder()
-    
                  .name("Film A")
                  .releaseDate(LocalDate.of(2022, 1, 2))
                  .build();
