@@ -6,13 +6,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import com.bootcamp.demo.demo_sb_calculator.util.Calculators;
 import com.bootcamp.demo.demo_sb_calculator.util.Convertor;
 
 
 // ! browser -> web request ->
-@Controller
-@ResponseBody
+// @Controller  // ! web layer listener (server), @Controller + @GetMapping
+// @ResponseBody  // Return JSON
+@RestController  // ! @RestController = @Controller + @ResponseBody
 public class CalculatorController {
 
   @GetMapping("/sum/{x}/{y}")
