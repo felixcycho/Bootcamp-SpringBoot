@@ -1,0 +1,16 @@
+{
+  :name" : "John",
+  "age" : 13,
+  "gender" 1: "Male"
+}
+
+public class Person {
+  private String name;
+  private int age;
+  private String gender;
+}
+
+public Person getPerson() {
+  Person p1 = new Person ("John", 13, "Male")
+  return p1;
+}

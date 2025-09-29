@@ -1,0 +1,21 @@
+List<Person>
+
+[
+  {
+    "name" : "John",
+    "age" : 19
+  },
+  {
+    "name" : "Sally",
+    "age" : 12
+  },
+  {
+    "name" : "Steve",
+    "age" : 10
+  }
+]
+
+{
+  "toList" : "",
+  "body" : "Dear sir, \n\n I am writing to ... "
+}

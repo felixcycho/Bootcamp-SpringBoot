@@ -1,0 +1,5 @@
+- Call API -> new RestTemplate().getForObject
+- model class (DTO - data transfer object -> User.class)
+- List -> List (stream.map())
+- mapper class
+- saveAll

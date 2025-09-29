@@ -1,0 +1,37 @@
+package com.bootcamp.demo.demo_sb_database.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.Builder;
+import lombok.Getter;
+
+@Entity
+@Table(name = "users")
+@Getter
+@Builder
+public class UserEntity {
+  @Id // ! Primary Key
+  @GeneratedValue(strategy = GenerationType.IDENTITY) // ! auto_increment
+  private Long id;
+  private String name;
+  private String username;
+  private String email;
+  private String phone;
+  private String website;
+  private String street;
+  private String suite;
+  private String city;
+  private String zipcode;
+  private String latitude;
+  private String longitude;
+  @Column(name = "com_name")
+  private String companyName;
+  @Column(name = "com_phrase")
+  private String companyPhrase;
+  @Column(name = "com_bs")
+  private String companyBs;
+}

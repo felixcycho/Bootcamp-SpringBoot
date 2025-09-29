@@ -1,0 +1,21 @@
+{
+  "name" : "John",
+  "age" : 19,
+  "address" : {
+    "street" : "123 Main St",
+    "city" : "Anytown"
+  }
+}
+
+@Getter
+public class Employee {
+  private String name;
+  private int age;
+  private Address address;
+
+  @Getter
+  public static class Address {
+    private String street;
+    private String city;
+  }
+}
