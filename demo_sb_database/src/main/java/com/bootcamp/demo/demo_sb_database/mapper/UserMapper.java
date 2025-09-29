@@ -11,6 +11,7 @@ public class UserMapper {
       ("Invalid user data: Missing required nested fields");
     }
     return UserEntity.builder() 
+      .origUserId(user.getId())
       .name(user.getName())
       .username(user.getUsername())
       .email(user.getEmail())

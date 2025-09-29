@@ -46,9 +46,11 @@ public class UserController {
 
   @PostMapping(value = "/users")
   public List<UserEntity> createUsers() {
+    this.userRepository.deleteAll();
     try {
-      List<User> users = getUsers();
-      // List<User> users = new RestTemplate().getForObject(userURL, User[].class);
+      // List<User> users = getUsers();
+      List<User> users 
+      = Arrays.asList(new RestTemplate().getForObject(userURL, User[].class));
       // Convert List<User> to List<UserEntity>
       List<UserEntity> userEntities = users.stream() //
         .map(u -> {
