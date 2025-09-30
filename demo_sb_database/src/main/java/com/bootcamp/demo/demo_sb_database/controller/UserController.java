@@ -24,6 +24,9 @@ public class UserController {
   @Autowired
   private UserRepository userRepository;
 
+  @Autowired
+  private RestTemplate restTemplate;
+
   @GetMapping(value = "/users")
   public List<User> getUsers() {
     try {
@@ -50,7 +53,8 @@ public class UserController {
     try {
       // List<User> users = getUsers();
       List<User> users 
-      = Arrays.asList(new RestTemplate().getForObject(userURL, User[].class));
+      // = Arrays.asList(new RestTemplate().getForObject(userURL, User[].class));
+      = Arrays.asList(this.restTemplate.getForObject(userURL, User[].class));
       // Convert List<User> to List<UserEntity>
       List<UserEntity> userEntities = users.stream() //
         .map(u -> {

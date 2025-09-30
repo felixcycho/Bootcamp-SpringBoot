@@ -15,11 +15,14 @@ import com.bootcamp.demo.demo_sb_weather.service.ObservatoryService;
 public class WeatherController implements WeatherOperation {
   @Autowired
   private ObservatoryService observatoryService;
+  @Autowired
+  private ForecastMapper forecastMapper;
 
   @Override
   public List<DayForecastDTO> getNineDaysWeather() {
     return this.observatoryService.findLatestForecast().stream()
-      .map(e -> new ForecastMapper().map(e))
+      //.map(e -> new ForecastMapper().map(e))
+      .map(e -> this.forecastMapper.map(e))
       .collect(Collectors.toList());
   }
 

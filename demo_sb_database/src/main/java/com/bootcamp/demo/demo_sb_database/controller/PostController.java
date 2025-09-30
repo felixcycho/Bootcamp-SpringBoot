@@ -32,6 +32,10 @@ public class PostController {
   private PostRepository postRepository;
   @Autowired
   private UserRepository userRepository;
+  @Autowired
+  private RestTemplate restTemplate;
+  @Autowired
+  private UserMapper userMapper;
 
   public static void main(String[] args) {
     String postURL 
@@ -53,17 +57,20 @@ public class PostController {
 
     // ! Call API for the data
     List<User> users
-    = Arrays.asList(new RestTemplate().getForObject(userURL, User[].class));
+    // = Arrays.asList(new RestTemplate().getForObject(userURL, User[].class));
+    = Arrays.asList(this.restTemplate.getForObject(userURL, User[].class));
     // System.out.println(users);
     List<Post> posts 
-    = Arrays.asList(new RestTemplate().getForObject(postURL, Post[].class));
+    // = Arrays.asList(new RestTemplate().getForObject(postURL, Post[].class));
+    = Arrays.asList(this.restTemplate.getForObject(postURL, Post[].class));
     // System.out.println(posts);
     // stream() -> map -> List<Post> -> List<PostEntity> repository.saveAll
 
     // ! Convert to List<UserEntity>
     List<UserEntity> userEntities 
     = users.stream()
-      .map(u -> new UserMapper().map(u))
+      // .map(u -> new UserMapper().map(u))
+      .map(u -> this.userMapper.map(u))
       .collect(Collectors.toList());
 
     // ! Convert to List<PostEntity>
