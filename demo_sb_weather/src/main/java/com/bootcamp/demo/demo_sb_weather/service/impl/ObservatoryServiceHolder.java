@@ -65,4 +65,10 @@ public class ObservatoryServiceHolder implements ObservatoryService {
     
     return this.weatherForecastRepository.saveAll(weatherForecastEntities);
   }
+
+  @Override
+  public List<WeatherForecastEntity> findLatestForecast() {
+    Long maxRequestId = this.weatherRequestRepository.findMaxRequestId();
+    return this.weatherForecastRepository.findByRequestId(maxRequestId);
+  }
 }

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bootcamp.demo.demo_sb_weather.controller.WeatherOperation;
 import com.bootcamp.demo.demo_sb_weather.dto.DayForecastDTO;
 import com.bootcamp.demo.demo_sb_weather.entity.WeatherForecastEntity;
+import com.bootcamp.demo.demo_sb_weather.mapper.ForecastMapper;
 import com.bootcamp.demo.demo_sb_weather.model.dto.WeatherDTO;
 import com.bootcamp.demo.demo_sb_weather.service.ObservatoryService;
 
@@ -17,7 +18,9 @@ public class WeatherController implements WeatherOperation {
 
   @Override
   public List<DayForecastDTO> getNineDaysWeather() {
-    return null;
+    return this.observatoryService.findLatestForecast().stream()
+      .map(e -> new ForecastMapper().map(e))
+      .collect(Collectors.toList());
   }
 
   @Override
