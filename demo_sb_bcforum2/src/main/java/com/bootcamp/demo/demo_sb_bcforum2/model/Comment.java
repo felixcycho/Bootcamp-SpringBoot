@@ -1,4 +1,4 @@
-package com.bootcamp.demo.demo_sb_bcforum.model;
+package com.bootcamp.demo.demo_sb_bcforum2.model;
 
 import lombok.Getter;
 

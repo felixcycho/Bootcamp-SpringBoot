@@ -1,4 +1,4 @@
-package com.bootcamp.demo.demo_sb_bcforum.controller;
+package com.bootcamp.demo.demo_sb_bcforum2.controller;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
-import com.bootcamp.demo.demo_sb_bcforum.entity.UserEntity;
-import com.bootcamp.demo.demo_sb_bcforum.mapper.UserMapper;
-import com.bootcamp.demo.demo_sb_bcforum.model.User;
-import com.bootcamp.demo.demo_sb_bcforum.repository.UserRepository;
+import com.bootcamp.demo.demo_sb_bcforum2.entity.UserEntity;
+import com.bootcamp.demo.demo_sb_bcforum2.mapper.UserMapper;
+import com.bootcamp.demo.demo_sb_bcforum2.model.User;
+import com.bootcamp.demo.demo_sb_bcforum2.repository.UserRepository;
 
 @RestController
 public class UserController {

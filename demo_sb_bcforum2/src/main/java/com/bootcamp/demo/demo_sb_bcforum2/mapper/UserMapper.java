@@ -1,7 +1,7 @@
-package com.bootcamp.demo.demo_sb_bcforum.mapper;
+package com.bootcamp.demo.demo_sb_bcforum2.mapper;
 
-import com.bootcamp.demo.demo_sb_bcforum.entity.UserEntity;
-import com.bootcamp.demo.demo_sb_bcforum.model.User;
+import com.bootcamp.demo.demo_sb_bcforum2.entity.UserEntity;
+import com.bootcamp.demo.demo_sb_bcforum2.model.User;
 
 public class UserMapper {
   public UserEntity map(User user) {

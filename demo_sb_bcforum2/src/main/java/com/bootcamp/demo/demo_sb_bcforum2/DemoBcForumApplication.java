@@ -1,4 +1,4 @@
-package com.bootcamp.demo.demo_sb_bcforum;
+package com.bootcamp.demo.demo_sb_bcforum2;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

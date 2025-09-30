@@ -1,4 +1,4 @@
-package com.bootcamp.demo.demo_sb_bcforum.entity;
+package com.bootcamp.demo.demo_sb_bcforum2.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,26 +15,25 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "posts")
+@Table(name = "comments")
 @Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class PostEntity {
+public class CommentEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-  private Long origPostId;               // original post id
-  private Long userId;
   @Column(nullable = false)
-  private String title;
+  private String name;
   @Column(nullable = false)
-  private String body;                   // default VARCHAR(255)
+  private String email;
+  @Column(nullable = false)
+  private String body;
 
   @ManyToOne
-  @JoinColumn(name = "user_id")
+  @JoinColumn(name = "post_id")
   @Setter
-  private UserEntity userEntity;
-
-
+  private PostEntity postEntity;
+  
 }

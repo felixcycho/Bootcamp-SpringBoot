@@ -1,4 +1,4 @@
-package com.bootcamp.demo.demo_sb_bcforum.entity;
+package com.bootcamp.demo.demo_sb_bcforum2.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

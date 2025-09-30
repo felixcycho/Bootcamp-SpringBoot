@@ -1,7 +1,7 @@
-package com.bootcamp.demo.demo_sb_bcforum.mapper;
+package com.bootcamp.demo.demo_sb_bcforum2.mapper;
 
-import com.bootcamp.demo.demo_sb_bcforum.entity.PostEntity;
-import com.bootcamp.demo.demo_sb_bcforum.model.Post;
+import com.bootcamp.demo.demo_sb_bcforum2.entity.PostEntity;
+import com.bootcamp.demo.demo_sb_bcforum2.model.Post;
 
 public class PostMapper {
   public PostEntity map(Post post) {

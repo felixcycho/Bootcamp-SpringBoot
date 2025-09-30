@@ -1,4 +1,4 @@
-package com.bootcamp.demo.demo_sb_bcforum.controller;
+package com.bootcamp.demo.demo_sb_bcforum2.controller;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,28 +6,35 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
-import com.bootcamp.demo.demo_sb_bcforum.entity.PostEntity;
-import com.bootcamp.demo.demo_sb_bcforum.entity.UserEntity;
-import com.bootcamp.demo.demo_sb_bcforum.mapper.UserMapper;
-import com.bootcamp.demo.demo_sb_bcforum.model.Post;
-import com.bootcamp.demo.demo_sb_bcforum.model.User;
-import com.bootcamp.demo.demo_sb_bcforum.repository.PostRepository;
-import com.bootcamp.demo.demo_sb_bcforum.repository.UserRepository;
+import com.bootcamp.demo.demo_sb_bcforum2.entity.CommentEntity;
+import com.bootcamp.demo.demo_sb_bcforum2.entity.PostEntity;
+import com.bootcamp.demo.demo_sb_bcforum2.entity.UserEntity;
+import com.bootcamp.demo.demo_sb_bcforum2.mapper.PostMapper;
+import com.bootcamp.demo.demo_sb_bcforum2.mapper.UserMapper;
+import com.bootcamp.demo.demo_sb_bcforum2.model.Comment;
+import com.bootcamp.demo.demo_sb_bcforum2.model.Post;
+import com.bootcamp.demo.demo_sb_bcforum2.model.User;
+import com.bootcamp.demo.demo_sb_bcforum2.repository.CommentRepository;
+import com.bootcamp.demo.demo_sb_bcforum2.repository.PostRepository;
+import com.bootcamp.demo.demo_sb_bcforum2.repository.UserRepository;
+import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
-public class PostController {
+public class CommentController {
+  private static final String commentURL
+  = "https://jsonplaceholder.typicode.com/comments";
   private static final String postURL 
   = "https://jsonplaceholder.typicode.com/posts";
   private static final String userURL
   = "https://jsonplaceholder.typicode.com/users";
 
+  @Autowired
+  private CommentRepository commentRepository;
   @Autowired
   private PostRepository postRepository;
   @Autowired
@@ -35,25 +42,27 @@ public class PostController {
   @Autowired
   private RestTemplate restTemplate;
   @Autowired
+  private PostMapper postMapper;
+  @Autowired
   private UserMapper userMapper;
 
   public static void main(String[] args) {
-    String postURL 
+    String commentURL 
     = UriComponentsBuilder.newInstance()
       .scheme("https")
       .host("jsonplaceholder.typicode.com")
       // .pathSegment("/v1")
-      .path("/posts")
+      .path("/comments")
       .toUriString();
-    System.out.println(postURL);
+    System.out.println(commentURL);
   }
 
-  @PostMapping(value = "/posts")
-  public List<PostEntity> createPosts() {
+  @PostMapping("/comments")
+  public List<CommentEntity> createComments() {
     // ! Clear all data in posts, users
+    this.commentRepository.deleteAll();
     this.postRepository.deleteAll();
     this.userRepository.deleteAll();
-
 
     // ! Call API for the data
     List<User> users
@@ -65,6 +74,11 @@ public class PostController {
     = Arrays.asList(this.restTemplate.getForObject(postURL, Post[].class));
     // System.out.println(posts);
     // stream() -> map -> List<Post> -> List<PostEntity> repository.saveAll
+    List<Comment> comments
+    // = Arrays.asList(new RestTemplate().getForObject(postURL, Post[].class));
+    = Arrays.asList(this.restTemplate.getForObject(commentURL, Comment[].class));
+    // System.out.println(comments);
+    // stream() -> map -> List<Comment> -> List<CommentEntity> repository.saveAll
 
     // ! Convert to List<UserEntity>
     List<UserEntity> userEntities 
@@ -90,25 +104,29 @@ public class PostController {
         postEntities.add(postEntity);
       }
     }
+    // ! Convert to List<CommentEntity>
+    List<CommentEntity> commentEntities = new ArrayList<>();
+    for (Comment comment : comments) {
+      Optional<PostEntity> oPostEntity 
+       = postEntities.stream()
+         .filter(e -> e.getOrigPostId().equals(comment.getPostId()))
+         .findFirst();
+      if (oPostEntity.isPresent()) {
+        CommentEntity commentEntity 
+        = CommentEntity.builder()
+          .name(comment.getName())
+          .email(comment.getEmail())
+          .body(comment.getBody())
+          .postEntity(oPostEntity.get())     // ! important (foreign key)
+          .build();
+        commentEntities.add(commentEntity);
+      }
+    }
     // ! insert into table
     this.userRepository.saveAll(userEntities);
-    return this.postRepository.saveAll(postEntities);
+    this.postRepository.saveAll(postEntities);
+    return this.commentRepository.saveAll(commentEntities);
 
-    // List<PostEntity> postEntities 
-    // = posts.stream() //
-    //   .map(e -> {
-    //    Optional<UserEntity> oUserEntity
-    //    = this.userRepository.findById(e.getUserId());
-    //      if (oUserEntity.isPresent()) {
-    //        PostEntity postEntity 
-    //        = PostEntity.builder() //
-    //          .title(e.getTitle()) //
-    //          .body(e.getBody()) //
-    //          .userEntity(oUserEntity.get()).build();
-    //      return postEntity;
-    //      }
-    //    return null;
-    //    }).collect(Collectors.toList());
   }
-  
+
 }
