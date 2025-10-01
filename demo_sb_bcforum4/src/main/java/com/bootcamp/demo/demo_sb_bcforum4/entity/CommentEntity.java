@@ -1,4 +1,4 @@
-package com.bootcamp.demo.demo_sb_bcforum3.entity;
+package com.bootcamp.demo.demo_sb_bcforum4.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,34 +9,29 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "posts")
+@Table(name = "comments")
 @Getter
-@Builder
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class PostEntity {
+public class CommentEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-  private Long origPostId;               // original post id
-  // private Long userId;                // causing conflict, so remove this, or
-  @Column(name = "other_user_id")        // Use a different column name
-  private Long userId;
   @Column(nullable = false)
-  private String title;
+  private String name;
   @Column(nullable = false)
-  private String body;                   // default VARCHAR(255)
+  private String email;
+  @Column(nullable = false)
+  private String body;
 
   @ManyToOne
-  @JoinColumn(name = "user_id")
-  @Setter
-  private UserEntity userEntity;
-
+  @JoinColumn(name = "post_id", nullable = false)
+  private PostEntity postEntity;
 
 }

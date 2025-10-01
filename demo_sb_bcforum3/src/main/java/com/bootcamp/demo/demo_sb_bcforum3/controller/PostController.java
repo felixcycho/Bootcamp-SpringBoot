@@ -8,9 +8,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 import com.bootcamp.demo.demo_sb_bcforum3.entity.PostEntity;
 import com.bootcamp.demo.demo_sb_bcforum3.entity.UserEntity;
@@ -23,6 +21,7 @@ import com.bootcamp.demo.demo_sb_bcforum3.repository.UserRepository;
 
 @RestController
 public class PostController {
+
   private static final String postURL 
   = "https://jsonplaceholder.typicode.com/posts";
   private static final String userURL
@@ -36,6 +35,7 @@ public class PostController {
   private RestTemplate restTemplate;
   @Autowired
   private UserMapper userMapper;
+
 
   public static void main(String[] args) {
     String postURL 

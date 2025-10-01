@@ -21,7 +21,6 @@ import com.bootcamp.demo.demo_sb_bcforum3.model.User;
 import com.bootcamp.demo.demo_sb_bcforum3.repository.CommentRepository;
 import com.bootcamp.demo.demo_sb_bcforum3.repository.PostRepository;
 import com.bootcamp.demo.demo_sb_bcforum3.repository.UserRepository;
-import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
@@ -109,7 +108,7 @@ public class CommentController {
     for (Comment comment : comments) {
       Optional<PostEntity> oPostEntity 
        = postEntities.stream()
-         .filter(e -> e.getOrigPostId().equals(comment.getPostId()))
+         .filter(e -> e.getOrigPostId() != null && e.getOrigPostId().equals(comment.getPostId()))
          .findFirst();
       if (oPostEntity.isPresent()) {
         CommentEntity commentEntity 
