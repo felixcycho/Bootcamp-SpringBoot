@@ -29,7 +29,7 @@ public class PostEntity {
   private String title;
   @Column(nullable = false)
   private String body;                   // default VARCHAR(255)
-  private String origPostId;
+  private Long origPostId;
 
   @ManyToOne
   @JoinColumn(name = "user_id")

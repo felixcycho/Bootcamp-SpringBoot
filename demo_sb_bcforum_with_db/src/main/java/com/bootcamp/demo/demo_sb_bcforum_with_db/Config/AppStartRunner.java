@@ -50,7 +50,7 @@ public class AppStartRunner implements CommandLineRunner {
       .collect(Collectors.toList());
 
     List<PostEntity> postEntities
-    = this.jphService.getAllUsers().stream()
+    = this.jphService.getAllPosts().stream()
       .map(p -> {
          PostEntity postEntity = this.postEntityMapper.map(p);
          UserEntity userEntity = userEntities.stream()
