@@ -1,5 +1,6 @@
 package com.bootcamp.demo.demo_sb_bcforum_with_db.entity;
 
+import jakarta.persistence.Column;
 // import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,15 +25,15 @@ public class PostEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-  // @Column(nullable = false)
+  @Column(nullable = false)
   private String title;
-  // @Column(nullable = false)
+  @Column(nullable = false)
   private String body;                   // default VARCHAR(255)
+  private String origPostId;
 
   @ManyToOne
   @JoinColumn(name = "user_id")
   @Setter
   private UserEntity userEntity;
-
 
 }

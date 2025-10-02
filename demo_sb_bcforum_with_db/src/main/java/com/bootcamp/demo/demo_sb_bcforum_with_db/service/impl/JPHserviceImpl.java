@@ -14,7 +14,7 @@ import com.bootcamp.demo.demo_sb_bcforum_with_db.model.UserDTO;
 import com.bootcamp.demo.demo_sb_bcforum_with_db.service.JPHService;
 
 @Service
-public class JPHserviceImpl implements JPHService {
+public class JPHServiceImpl implements JPHService {
   @Autowired
   private RestTemplate restTemplate;
 

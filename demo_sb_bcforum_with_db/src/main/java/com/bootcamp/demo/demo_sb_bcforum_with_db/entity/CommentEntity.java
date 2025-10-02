@@ -1,5 +1,6 @@
 package com.bootcamp.demo.demo_sb_bcforum_with_db.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,6 +26,7 @@ public class CommentEntity {
   private Long id;
   private String name;
   private String email;
+  @Column(length = 1000)
   private String body;
 
   @ManyToOne
@@ -32,8 +34,4 @@ public class CommentEntity {
   @Setter
   private PostEntity postEntity;
 
-  @ManyToOne
-  @JoinColumn(name = "user_id")
-  @Setter
-  private UserEntity userEntity;
 }

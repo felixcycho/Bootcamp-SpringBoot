@@ -1,0 +1,16 @@
+package com.bootcamp.demo.demo_sb_bcforum_with_db.mapper;
+
+import org.springframework.stereotype.Component;
+import com.bootcamp.demo.demo_sb_bcforum_with_db.entity.PostEntity;
+import com.bootcamp.demo.demo_sb_bcforum_with_db.model.PostDTO;
+
+@Component
+public class PostEntityMapper {
+  public PostEntity map(PostDTO dto) {
+    return PostEntity.builder() //
+      .origPostId(dto.getId())
+      .title(dto.getTitle()) //
+      .body(dto.getBody()) //
+      .build();
+  }
+}

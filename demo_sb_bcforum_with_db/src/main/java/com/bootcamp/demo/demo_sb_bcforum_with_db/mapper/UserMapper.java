@@ -9,13 +9,14 @@ import com.bootcamp.demo.demo_sb_bcforum_with_db.model.UserDTO;
 public class UserMapper {
 
   public FullDataDto map(UserDTO dto) {
-    FullDataDto.AddressDto.GeoDto geoDto =
-        FullDataDto.AddressDto.GeoDto.builder() //
-            .lat(dto.getAddress().getGeo().getLat()) //
-            .lng(dto.getAddress().getGeo().getLng()) //
-            .build();
+    FullDataDto.AddressDto.GeoDto geoDto 
+    = FullDataDto.AddressDto.GeoDto.builder() //
+        .lat(dto.getAddress().getGeo().getLat()) //
+        .lng(dto.getAddress().getGeo().getLng()) //
+        .build();
 
-    FullDataDto.AddressDto addressDto = FullDataDto.AddressDto.builder() //
+    FullDataDto.AddressDto addressDto 
+    = FullDataDto.AddressDto.builder() //
         .city(dto.getAddress().getCity()) //
         .street(dto.getAddress().getStreet()) //
         .zipcode(dto.getAddress().getZipcode()) //
@@ -23,7 +24,8 @@ public class UserMapper {
         .geo(geoDto) //
         .build();
 
-    FullDataDto.CompanyDto companyDto = FullDataDto.CompanyDto.builder() //
+    FullDataDto.CompanyDto companyDto 
+    = FullDataDto.CompanyDto.builder() //
         .bs(dto.getCompany().getBs()) //
         .catchPhrase(dto.getCompany().getCatchPhrase()) //
         .name(dto.getCompany().getName()) //
