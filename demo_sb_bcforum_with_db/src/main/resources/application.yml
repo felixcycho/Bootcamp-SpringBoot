@@ -1,0 +1,27 @@
+# server:
+#   port: 8081
+
+# if not specifically define server port,
+  # by default, 8080
+jph-service:
+  host:    'jsonplaceholder.typicode.com'
+  path-segment: ''
+  endpoints:
+    users:  '/users'
+    posts:  '/posts'
+    comments:   '/comments'
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: "jdbc:mysql://localhost:3306/bootcamp_2508_bcforum"
+    username: "root"
+    password: "admin1234"
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      dialect: org.hibernate.dialect.MySQL8Dialect
+      
+

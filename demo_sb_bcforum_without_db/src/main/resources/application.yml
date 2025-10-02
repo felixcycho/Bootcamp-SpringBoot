@@ -1,9 +1,6 @@
-server:
-  port: 8080
-
 jph-service:
   host:    'jsonplaceholder.typicode.com'
-  path-segment:  ''
+  path-segment: ''
   endpoints:
     users:  '/users'
     posts:  '/posts'
