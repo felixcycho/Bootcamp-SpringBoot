@@ -4,7 +4,7 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: "jdbc:mysql://localhost:3306/bootcamp_2508_bcforum"
+    url: "jdbc:mysql://localhost:3306/bootcamp_2508"
     username: "root"
     password: "admin1234"
   jpa:
@@ -13,4 +13,3 @@ spring:
       ddl-auto: update
     properties:
       dialect: org.hibernate.dialect.MySQL8Dialect
-      
