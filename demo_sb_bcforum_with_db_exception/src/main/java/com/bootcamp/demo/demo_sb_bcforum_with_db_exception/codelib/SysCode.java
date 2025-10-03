@@ -4,7 +4,9 @@ public enum SysCode {
   OK(0, "OK."),
   FAIL(99999, "Fail."),
   ID_NOT_FOUND(99998, "ID not found."),
-  ENUM_NOT_FOUND(99997, "Enum not found.")
+  ENUM_NOT_FOUND(99997, "Enum not found."),
+  API_NOT_FOUND(999998, "API not found."),
+  DB_CONNECT_FAIL(999997, "Database connection fail."),
   ;
 
   private Integer code;

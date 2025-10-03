@@ -8,15 +8,25 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
+import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.codelib.NotFoundException;
+import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.codelib.SysCode;
+import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.entity.CommentEntity;
+import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.entity.PostEntity;
 import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.model.CommentDTO;
 import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.model.PostDTO;
 import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.model.UserDTO;
+import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.repository.CommentRepository;
+import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.repository.PostRepository;
 import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.service.JPHService;
 
 @Service
 public class JPHServiceImpl implements JPHService {
   @Autowired
   private RestTemplate restTemplate;
+  @Autowired
+  private PostRepository postRepository;
+  @Autowired
+  private CommentRepository commentRepository;
 
   // ! @Value -> Check Dependency during Server Starts (~Component Scan)
   @Value(value = "${jph-service.host}")
@@ -111,4 +121,14 @@ public class JPHServiceImpl implements JPHService {
     }
     return Arrays.asList(commentDTOs);
   }
+
+  @Override
+  public List<CommentEntity> getCommentsByPostId(Long postId) {
+    PostEntity postEntity = this.postRepository.findById(postId)
+      .orElseThrow(() -> new NotFoundException(SysCode.ID_NOT_FOUND));
+    return this.commentRepository.findByPost(postEntity);
+  }
+
+
+
 }

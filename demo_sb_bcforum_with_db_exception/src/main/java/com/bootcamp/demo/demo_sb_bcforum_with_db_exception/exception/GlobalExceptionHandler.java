@@ -2,6 +2,8 @@ package com.bootcamp.demo.demo_sb_bcforum_with_db_exception.exception;
 
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.codelib.ApiUnavailableException;
+import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.codelib.DatabaseConnectionFailException;
 import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.codelib.GeneralResponse;
 import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.codelib.NotFoundException;
 import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.codelib.SysCode;
@@ -35,6 +37,20 @@ public class GlobalExceptionHandler {
     return GeneralResponse.<String>builder()
       .config(SysCode.codeOf(e.getCode())) // 99999, "Fail."
       .data(e.getMessage())
+      .build();
+  }
+
+  @ExceptionHandler(value = ApiUnavailableException.class)
+  public GeneralResponse<String> handleApiUnavailableException(ApiUnavailableException e) {
+    return GeneralResponse.<String>builder()
+      .config(SysCode.codeOf(e.getCode()))
+      .build();
+  }
+
+  @ExceptionHandler(value = DatabaseConnectionFailException.class)
+  public GeneralResponse<String> handleDatabaseConnectionFailException(DatabaseConnectionFailException e) {
+    return GeneralResponse.<String>builder()
+      .config(SysCode.codeOf(e.getCode()))
       .build();
   }
 }
