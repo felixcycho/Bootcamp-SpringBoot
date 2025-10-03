@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.codelib.GeneralResponse;
+import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.codelib.NotFoundException;
+import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.codelib.SysCode;
 import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.controller.ForumAppOperation;
 import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.dto.FullDataDto;
 import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.dto.FullDataDto2;
@@ -69,6 +71,7 @@ public class ForumAppController implements ForumAppOperation {
 
   @Override
   public GeneralResponse<FullDataDto2> getFullData2(String uid) {
+
     // ! happy flow (try-catch is not required)
     Long userId = Long.valueOf(uid);               // throw NumberFormatException
 
@@ -100,10 +103,11 @@ public class ForumAppController implements ForumAppOperation {
           return fullDataDto2;
       })
       .findFirst() //
-      .orElse(null);
+      .orElseThrow(() -> new NotFoundException(SysCode.ID_NOT_FOUND));
     return GeneralResponse.<FullDataDto2>builder() //
-        .code(0)
-        .message("OK.")
+        // .code(0)
+        // .message("OK.")
+        .ok()
         .data(fullDataDto)
         .build();
   }

@@ -37,15 +37,40 @@ public class GeneralResponse<T> {
     private String message;
     private T data;
 
-    public Builder<T> code(Integer code) {
-      this.code = code;
+    public Builder() {
+      this.code = 0;
+      this.message = "OK.";
+    }
+    
+    public Builder<T> ok() {
+      this.code = SysCode.OK.getCode();
+      this.message = SysCode.OK.getMessage();
+      return this;
+    }
+    
+    public Builder<T> fail() {
+      this.code = SysCode.FAIL.getCode();
+      this.message = SysCode.FAIL.getMessage();
       return this;
     }
 
-    public Builder<T> message(String message) {
-      this.message = message;
+    public Builder<T> config(SysCode sysCode) {
+      this.code = sysCode.getCode();
+      this.message = sysCode.getMessage();
       return this;
     }
+
+    // ! setter
+    // public Builder<T> code(Integer code) {
+    //   this.code = code;
+    //   return this;
+    // }
+
+    // ! setter
+    // public Builder<T> message(String message) {
+    //   this.message = message;
+    //   return this;
+    // }
     
     public Builder<T> data(T data) {
       this.data = data;
@@ -56,12 +81,12 @@ public class GeneralResponse<T> {
     public GeneralResponse<T> build() {
       return new GeneralResponse<>(this);
     }
+
   }
 
   public static void main(String[] args) {
     GeneralResponse<ErrorMessage> response = GeneralResponse.<ErrorMessage>builder()
-      .code(999)
-      .message("Testing")
+      .fail()
       .data(new ErrorMessage(999, "ABCDE"))
       .build();
     
