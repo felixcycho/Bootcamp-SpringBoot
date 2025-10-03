@@ -1,4 +1,4 @@
-package com.bootcamp.demo.demo_sb_bcforum_with_db.config;
+package com.bootcamp.demo.demo_sb_bcforum_with_db_exception.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

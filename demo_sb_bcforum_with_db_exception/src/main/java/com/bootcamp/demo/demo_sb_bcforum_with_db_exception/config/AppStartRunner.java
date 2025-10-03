@@ -1,20 +1,20 @@
-package com.bootcamp.demo.demo_sb_bcforum_with_db.config;
+package com.bootcamp.demo.demo_sb_bcforum_with_db_exception.config;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import com.bootcamp.demo.demo_sb_bcforum_with_db.entity.CommentEntity;
-import com.bootcamp.demo.demo_sb_bcforum_with_db.entity.PostEntity;
-import com.bootcamp.demo.demo_sb_bcforum_with_db.entity.UserEntity;
-import com.bootcamp.demo.demo_sb_bcforum_with_db.mapper.CommentEntityMapper;
-import com.bootcamp.demo.demo_sb_bcforum_with_db.mapper.PostEntityMapper;
-import com.bootcamp.demo.demo_sb_bcforum_with_db.mapper.UserEntityMapper;
-import com.bootcamp.demo.demo_sb_bcforum_with_db.repository.CommentRepository;
-import com.bootcamp.demo.demo_sb_bcforum_with_db.repository.PostRepository;
-import com.bootcamp.demo.demo_sb_bcforum_with_db.repository.UserRepository;
-import com.bootcamp.demo.demo_sb_bcforum_with_db.service.JPHService;
+import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.entity.CommentEntity;
+import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.entity.PostEntity;
+import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.entity.UserEntity;
+import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.mapper.CommentEntityMapper;
+import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.mapper.PostEntityMapper;
+import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.mapper.UserEntityMapper;
+import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.repository.CommentRepository;
+import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.repository.PostRepository;
+import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.repository.UserRepository;
+import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.service.JPHService;
 
 // ! Exercise 3 Task 2 - CommandLineRunner
 @Component
