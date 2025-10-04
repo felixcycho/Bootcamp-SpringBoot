@@ -88,20 +88,24 @@ public class ForumAppController implements ForumAppOperation {
           .id(u.getId()) // 
           .username(u.getUsername()) //
           .build();
-        List<FullDataDto2.CommentDto> commentDtos = commentDTOs.stream() //
+        List<FullDataDto2.CommentDto> commentDtos 
+        = commentDTOs.stream() //
           .filter(c -> {
             return postDTOs.stream() //
-              .filter(p -> p.getId().equals(c.getPostId()) && p.getUserId().equals(u.getId())) //
+              .filter(p -> p.getId().equals(c.getPostId()) 
+                && p.getUserId().equals(u.getId())) //
               .findAny().isPresent();
-            }).map(c -> {
+            })
+            .map(c -> {
               return FullDataDto2.CommentDto.builder() //
                 .name(c.getName())
                 .email(c.getEmail())
                 .body(c.getBody())
                 .build();
-            }).collect(Collectors.toList());
-          fullDataDto2.setComments(commentDtos);
-          return fullDataDto2;
+             })
+             .collect(Collectors.toList());
+        fullDataDto2.setComments(commentDtos);
+        return fullDataDto2;
       })
       .findFirst() //
       .orElseThrow(() -> new NotFoundException(SysCode.ID_NOT_FOUND));
@@ -115,7 +119,8 @@ public class ForumAppController implements ForumAppOperation {
 
   @Override
   public GeneralResponse<List<CommentEntity>> getCommentsByPostId(Long id) {
-    List<CommentEntity> commentEntities = this.jphService.getCommentsByPostId(id);
+    List<CommentEntity> commentEntities 
+    = this.jphService.getCommentsByPostId(id);
     return GeneralResponse.<List<CommentEntity>>builder()
       .ok()
       .data(commentEntities)

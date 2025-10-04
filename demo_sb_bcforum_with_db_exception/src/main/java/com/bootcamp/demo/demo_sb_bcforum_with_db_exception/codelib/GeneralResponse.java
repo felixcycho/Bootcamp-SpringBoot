@@ -85,7 +85,8 @@ public class GeneralResponse<T> {
   }
 
   public static void main(String[] args) {
-    GeneralResponse<ErrorMessage> response = GeneralResponse.<ErrorMessage>builder()
+    GeneralResponse<ErrorMessage> response 
+    = GeneralResponse.<ErrorMessage>builder()
       .fail()
       .data(new ErrorMessage(999, "ABCDE"))
       .build();
