@@ -85,7 +85,7 @@ public class JPHServiceImpl implements JPHService {
           .path(postsEndpoint) //
           .build() //
           .toUriString();
-      System.out.println("postsUrl=" + postsUrl);
+      System.out.println("postsUrl = " + postsUrl);
       postDTOs = this.restTemplate.getForObject(postsUrl, PostDTO[].class);
     } catch (RestClientException e) {
       System.out.println("JsonPlaceHolder Posts Endpoints Error.");
@@ -103,11 +103,11 @@ public class JPHServiceImpl implements JPHService {
           .path(commentsEndpoint) //
           .build() //
           .toUriString();
-      System.out.println("commentsUrl=" + commentsUrl);
+      System.out.println("commentsUrl = " + commentsUrl);
       commentDTOs =
           this.restTemplate.getForObject(commentsUrl, CommentDTO[].class);
     } catch (RestClientException e) {
-      System.out.println("JsonPlaceHolder Posts Endpoints Error.");
+      System.out.println("JsonPlaceHolder Comments Endpoints Error.");
     }
     return Arrays.asList(commentDTOs);
   }
