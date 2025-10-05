@@ -1,4 +1,4 @@
-package com.bootcamp.demo.demo_sb_bcforum_without_db.Config;
+package com.bootcamp.demo.demo_sb_bcforum_without_db.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
