@@ -11,9 +11,5 @@ public class AppConfig {
   ForecastMapper forecastMapper() {
     return new ForecastMapper();
   }
-  @Bean
-  String tutor() {
-    return "Vincent";
-  }
 
 }
