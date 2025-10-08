@@ -68,15 +68,15 @@ public class JPHServiceImpl implements JPHService {
   @Override
   public List<UserDTO> getAllUsers() {
     UserDTO[] userDTOs = new UserDTO[0];
-    try {
 
+    try {
       String usersUrl = UriComponentsBuilder.newInstance() //
           .host(jphHost) //
           .scheme("https") //
           .path(usersEndpoint) //
           .build() //
           .toUriString();
-      System.out.println("usersUrl=" + usersUrl);
+      System.out.println("usersUrl = " + usersUrl);
 
       userDTOs = this.restTemplate.getForObject(usersUrl, UserDTO[].class);
     } catch (RestClientException e) {

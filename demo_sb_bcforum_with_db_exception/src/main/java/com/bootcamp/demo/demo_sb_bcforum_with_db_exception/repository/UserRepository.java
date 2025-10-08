@@ -13,9 +13,7 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
   // Native Query (Demo Wrong Column name (i.e. names) -> SQL EXception)
   // @Query(
   //   value = "select u.* from users u where names = ?", nativeQuery = true)
-  @Query(
-    value = "select u.* from users u where name = ?", nativeQuery = true)
+  @Query(value = "select u.* from users u where u.names = :name", nativeQuery = true)
   // UserEntity findUsersByName(@Param(value = "name") String name); 
-    // 
   List<UserEntity> findUsersByName(@Param(value = "name") String name); 
 }

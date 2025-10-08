@@ -1,7 +1,6 @@
 package com.bootcamp.demo.demo_sb_bcforum_with_db_exception.controller;
 
 import java.util.List;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.codelib.GeneralResponse;
@@ -25,10 +24,10 @@ public interface ForumAppOperation {
   GeneralResponse<List<CommentEntity>> getCommentsByPostId (
     @RequestParam(value = "postid") Long id);
 
-    // ! Test SQL Exception
-    @GetMapping(value = "/users")
-    // List<UserEntity> getUsersByName(@RequestParam(value = "name") String name);
-      // Unnecessary path variable
-    List<UserEntity> getUsersByName(@RequestParam String name);
+  // ! Test SQL Exception
+  @GetMapping(value = "/users")
+  // List<UserEntity> getUsersByName(@RequestParam(value = "name") String name);
+    // Unnecessary path variable
+  List<UserEntity> getUsersByName(@RequestParam String name);
 
 }
