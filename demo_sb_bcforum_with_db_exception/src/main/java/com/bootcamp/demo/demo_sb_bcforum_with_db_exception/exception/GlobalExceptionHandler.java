@@ -1,7 +1,10 @@
 package com.bootcamp.demo.demo_sb_bcforum_with_db_exception.exception;
 
+import java.util.ArrayList;
+import org.springframework.dao.InvalidDataAccessResourceUsageException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.client.RestClientException;
 import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.codelib.ApiUnavailableException;
 import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.codelib.DatabaseConnectionFailException;
 import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.codelib.GeneralResponse;
@@ -53,4 +56,30 @@ public class GlobalExceptionHandler {
       .config(SysCode.codeOf(e.getCode()))
       .build();
   }
+
+  // <Void> 不可 return List, 而 <Object> 可 return List.
+  // @ExceptionHandler(value = RestClientException.class)
+  // public GeneralResponse<Void> handleServiceNotFoundException(RestClientException e) {
+  //   return GeneralResponse.<Void>builder()
+  //     .config(SysCode.SERVICE_NOT_FOUND)
+  //     .build();
+  // }
+
+  @ExceptionHandler(value = RestClientException.class)
+  public GeneralResponse<Object> handleServiceNotFoundException(RestClientException e) {
+    return GeneralResponse.<Object>builder()
+      .config(SysCode.SERVICE_NOT_FOUND)
+      .data(new ArrayList<>())
+      .build();
+  }
+
+  @ExceptionHandler(value = InvalidDataAccessResourceUsageException.class)
+  public GeneralResponse<Object> handleInvalidSqlException(InvalidDataAccessResourceUsageException e) {
+    return GeneralResponse.<Object>builder()
+      .config(SysCode.SQL_INVALID)
+      .data(new ArrayList<>())
+      .build();
+  }
 }
+
+

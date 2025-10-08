@@ -7,6 +7,8 @@ public enum SysCode {
   ENUM_NOT_FOUND(99997, "Enum not found."),
   API_NOT_FOUND(999998, "API not found."),
   DB_CONNECT_FAIL(999997, "Database connection fail."),
+  SERVICE_NOT_FOUND(999996, "Service endpoint not found."),
+  SQL_INVALID(999995, "SQL invalid."),
   ;
 
   private Integer code;

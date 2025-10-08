@@ -12,6 +12,7 @@ import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.controller.ForumAppOp
 import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.dto.FullDataDto;
 import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.dto.FullDataDto2;
 import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.entity.CommentEntity;
+import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.entity.UserEntity;
 import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.mapper.CommentMapper;
 import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.mapper.PostMapper;
 import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.mapper.UserMapper;
@@ -126,4 +127,7 @@ public class ForumAppController implements ForumAppOperation {
       .data(commentEntities)
       .build();
   }
+
+  @Override
+  public List<UserEntity> get
 }
