@@ -19,10 +19,13 @@ import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.mapper.UserMapper;
 import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.model.CommentDTO;
 import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.model.PostDTO;
 import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.model.UserDTO;
+import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.repository.UserRepository;
 import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.service.JPHService;
 
 @RestController
 public class ForumAppController implements ForumAppOperation {
+
+    private final UserRepository userRepository;
   @Autowired
   private JPHService jphService;
 
@@ -34,6 +37,10 @@ public class ForumAppController implements ForumAppOperation {
 
   @Autowired
   private CommentMapper commentMapper;
+
+    ForumAppController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
   @Override
   public List<FullDataDto> getFullData() {
@@ -129,5 +136,7 @@ public class ForumAppController implements ForumAppOperation {
   }
 
   @Override
-  public List<UserEntity> get
+  public List<UserEntity> getUsersByName(String name) {
+    return this.userRepository.findUsersByName(name);
+  }
 }
