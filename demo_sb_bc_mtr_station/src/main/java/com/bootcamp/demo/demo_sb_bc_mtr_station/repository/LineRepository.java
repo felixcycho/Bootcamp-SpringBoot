@@ -1,6 +1,5 @@
 package com.bootcamp.demo.demo_sb_bc_mtr_station.repository;
 
-import java.util.List;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

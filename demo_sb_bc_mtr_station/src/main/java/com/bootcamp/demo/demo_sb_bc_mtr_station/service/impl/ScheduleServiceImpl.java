@@ -37,9 +37,8 @@ public class ScheduleServiceImpl implements ScheduleService {
         .queryParam("sta", station) //
         .build() //
         .toUriString();
-    System.out.println("scheduleUrl=" + scheduleUrl);
+    System.out.println("scheduleUrl = " + scheduleUrl);
     return this.restTemplate.getForObject(scheduleUrl, ScheduleDTO.class);
   }
 
-  
 }

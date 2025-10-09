@@ -14,6 +14,7 @@ public class AppStartRunner implements CommandLineRunner {
 
   @Override
   public void run(String... args) throws Exception {
+    this.lineRepository.deleteAll();
     List<LineEntity> lineEntities = List.of(
       new LineEntity("TWL", "Tsuen Wan Line"),
       new LineEntity("KTL", "Kwun Tong Line")

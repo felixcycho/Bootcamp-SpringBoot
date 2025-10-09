@@ -1,6 +1,5 @@
 package com.bootcamp.demo.demo_sb_bc_mtr_station.entity;
 
-import java.util.List;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
