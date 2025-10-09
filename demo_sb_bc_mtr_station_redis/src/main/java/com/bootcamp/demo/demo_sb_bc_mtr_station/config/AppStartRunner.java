@@ -14,6 +14,7 @@ public class AppStartRunner implements CommandLineRunner {
 
   @Override
   public void run(String... args) throws Exception {
+    // ! Write database flow
     this.lineRepository.deleteAll();
     List<LineEntity> lineEntities = List.of(
       new LineEntity("TWL", "Tsuen Wan Line"),
@@ -27,6 +28,8 @@ public class AppStartRunner implements CommandLineRunner {
       new LineEntity("ISL", "Island Line")
     );
     this.lineRepository.saveAll(lineEntities);
+
+    // ! Redis
   }
   
 }
