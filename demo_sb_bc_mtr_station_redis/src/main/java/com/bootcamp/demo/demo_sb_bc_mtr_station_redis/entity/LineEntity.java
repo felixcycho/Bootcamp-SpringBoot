@@ -1,4 +1,4 @@
-package com.bootcamp.demo.demo_sb_bc_mtr_station.entity;
+package com.bootcamp.demo.demo_sb_bc_mtr_station_redis.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,12 +12,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "mtr_stations")
+@Table(name = "mtr_lines")
 @Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class StationEntity {
+public class LineEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -25,4 +25,9 @@ public class StationEntity {
   private String code;
   private String description;
 
+  public LineEntity(String code, String description) {
+    this.code = code;
+    this.description = description;
+  }
+  
 }

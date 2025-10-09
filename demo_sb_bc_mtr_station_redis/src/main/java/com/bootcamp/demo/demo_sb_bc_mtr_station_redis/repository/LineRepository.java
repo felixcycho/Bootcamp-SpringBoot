@@ -1,9 +1,9 @@
-package com.bootcamp.demo.demo_sb_bc_mtr_station.repository;
+package com.bootcamp.demo.demo_sb_bc_mtr_station_redis.repository;
 
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import com.bootcamp.demo.demo_sb_bc_mtr_station.entity.LineEntity;
+import com.bootcamp.demo.demo_sb_bc_mtr_station_redis.entity.LineEntity;
 
 @Repository
 public interface LineRepository extends JpaRepository<LineEntity, Long> {

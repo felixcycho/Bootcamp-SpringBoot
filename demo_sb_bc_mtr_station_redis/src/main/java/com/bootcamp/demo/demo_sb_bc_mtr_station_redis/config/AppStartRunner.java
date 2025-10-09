@@ -1,11 +1,11 @@
-package com.bootcamp.demo.demo_sb_bc_mtr_station.config;
+package com.bootcamp.demo.demo_sb_bc_mtr_station_redis.config;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import com.bootcamp.demo.demo_sb_bc_mtr_station.entity.LineEntity;
-import com.bootcamp.demo.demo_sb_bc_mtr_station.repository.LineRepository;
+import com.bootcamp.demo.demo_sb_bc_mtr_station_redis.entity.LineEntity;
+import com.bootcamp.demo.demo_sb_bc_mtr_station_redis.repository.LineRepository;
 
 @Component
 public class AppStartRunner implements CommandLineRunner {

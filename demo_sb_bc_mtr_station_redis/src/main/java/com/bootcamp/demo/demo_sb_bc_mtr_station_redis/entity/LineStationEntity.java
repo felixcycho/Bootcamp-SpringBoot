@@ -1,4 +1,4 @@
-package com.bootcamp.demo.demo_sb_bc_mtr_station.entity;
+package com.bootcamp.demo.demo_sb_bc_mtr_station_redis.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

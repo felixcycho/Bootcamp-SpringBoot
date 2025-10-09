@@ -1,8 +1,8 @@
-package com.bootcamp.demo.demo_sb_bc_mtr_station.service;
+package com.bootcamp.demo.demo_sb_bc_mtr_station_redis.service;
 
 import java.util.List;
-import com.bootcamp.demo.demo_sb_bc_mtr_station.entity.LineEntity;
-import com.bootcamp.demo.demo_sb_bc_mtr_station.model.dto.ScheduleDTO;
+import com.bootcamp.demo.demo_sb_bc_mtr_station_redis.entity.LineEntity;
+import com.bootcamp.demo.demo_sb_bc_mtr_station_redis.model.dto.ScheduleDTO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 public interface ScheduleService {

@@ -1,4 +1,4 @@
-package com.bootcamp.demo.demo_sb_bc_mtr_station.model.dto;
+package com.bootcamp.demo.demo_sb_bc_mtr_station_redis.model.dto;
 
 import java.time.LocalDateTime;
 import java.util.List;
