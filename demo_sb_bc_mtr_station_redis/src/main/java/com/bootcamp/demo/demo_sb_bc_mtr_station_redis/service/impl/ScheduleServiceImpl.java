@@ -37,12 +37,12 @@ public class ScheduleServiceImpl implements ScheduleService {
 
   // @Autowired
   // private RedisTemplate<String, String> redisTemplate;
+  
+  @Autowired
+  private LineRepository lineRepository;
 
   @Autowired
   private RedisManager redisManager;
-
-  @Autowired
-  private LineRepository lineRepository;
 
   // @Autowired
   // private ObjectMapper objectMapper;
@@ -62,7 +62,7 @@ public class ScheduleServiceImpl implements ScheduleService {
     return this.restTemplate.getForObject(scheduleUrl, ScheduleDTO.class);
   }
 
-  // ! Read-Through
+  // ! Cache Read-Through Pattern
   @Override
   public List<LineEntity> getAllLines() throws JsonProcessingException {
     // ! Step 1:  Read Redis

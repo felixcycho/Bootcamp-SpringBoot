@@ -3,8 +3,8 @@ package com.bootcamp.demo.demo_sb_bc_mtr_station_redis.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.RedisSerializer;
+// import org.springframework.data.redis.core.RedisTemplate;
+// import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.web.client.RestTemplate;
 import com.bootcamp.demo.demo_sb_bc_mtr_station_redis.codelib.RedisManager;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -28,7 +28,7 @@ public class AppConfig {
   //   redisTemplate.afterPropertiesSet();
   //   return redisTemplate;
   // }
-  
+
   @Bean
   RedisManager redisManager(RedisConnectionFactory factory, ObjectMapper objectMapper) {
     return new RedisManager(factory, objectMapper);

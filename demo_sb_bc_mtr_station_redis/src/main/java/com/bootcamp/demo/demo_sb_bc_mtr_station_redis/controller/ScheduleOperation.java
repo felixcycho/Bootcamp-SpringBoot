@@ -9,10 +9,10 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 
 public interface ScheduleOperation {
 
-  @GetMapping(value = "/mtr/schedule")
+  @GetMapping(value = "/mtr/schedule2")
   ScheduleDTO getSchedule(@RequestParam String line, @RequestParam String station);
 
-  @GetMapping(value = "/mtr/lines")
+  @GetMapping(value = "/mtr/lines2")
   List<LineEntity> getAllLines() throws JsonProcessingException;
 
 

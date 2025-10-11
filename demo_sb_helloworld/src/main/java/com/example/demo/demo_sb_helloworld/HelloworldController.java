@@ -13,7 +13,7 @@ public class HelloworldController {
     return "hello world! welcome to bootcamp!!!";
   }
 
-  @GetMapping(value = "/sum/{x}/{y}")
+  @GetMapping(value = "/helloworld/sum/{x}/{y}")
   public Integer sum(@PathVariable Integer x, @PathVariable Integer y) {
     return x + y;
   }
