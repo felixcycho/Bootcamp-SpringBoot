@@ -15,5 +15,4 @@ public interface ScheduleOperation {
   @GetMapping(value = "/mtr/lines2")
   List<LineEntity> getAllLines() throws JsonProcessingException;
 
-
 }
