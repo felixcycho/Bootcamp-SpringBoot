@@ -1,0 +1,34 @@
+<!-- coin-data.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Coin Data</title>
+  <script src="/js/coinloader.js"></script>
+</head>
+
+<body>
+  <h1>Coin Data</h1>
+  <div class="form-group">
+    <label for="coinFilter">Filter by ID:</label>
+    <input type="text" class="form-control" id="coinFilter" placeholder="Enter Coin ID">
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Image</th>
+        <th>Current Price (USD)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="coin : ${coinList}" class="coinRow">
+        <td th:text="${coin.name}"></td>
+        <td><img th:src="${coin.image}" height="35"></td>
+        <td th:text="${coin.currentPrice}"></td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+
+</html>
