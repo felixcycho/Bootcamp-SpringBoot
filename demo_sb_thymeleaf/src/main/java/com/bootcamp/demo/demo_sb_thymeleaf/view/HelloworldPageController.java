@@ -1,4 +1,4 @@
-package com.bootcamp.demo.demo_thymeleaf.view;
+package com.bootcamp.demo.demo_sb_thymeleaf.view;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

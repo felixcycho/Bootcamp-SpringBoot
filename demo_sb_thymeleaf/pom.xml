@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.bootcamp.demo</groupId>
-	<artifactId>demo_thymeleaf</artifactId>
+	<artifactId>demo_sb_hymeleaf</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo_thymeleaf</name>
+	<name>demo_sb_thymeleaf</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
