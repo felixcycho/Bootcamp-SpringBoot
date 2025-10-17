@@ -8,7 +8,7 @@ import lombok.Getter;
 
 @Getter
 @Builder
-@JsonIgnoreProperties   (ignoreUnknown = true)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CoinDto {
   private String id;
   private String symbol;
