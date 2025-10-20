@@ -38,7 +38,15 @@ public class ScheduleServiceImpl implements ScheduleService {
         .build() //
         .toUriString();
     System.out.println("scheduleUrl = " + scheduleUrl);
-    return this.restTemplate.getForObject(scheduleUrl, ScheduleDTO.class);
+
+    try {
+      return this.restTemplate.getForObject(scheduleUrl, ScheduleDTO.class);
+    } 
+    catch (Exception e) {
+        // Log the error and return null or throw a custom exception
+        System.err.println("Error fetching schedule: " + e.getMessage());
+        return null;
+    }
   }
 
 }

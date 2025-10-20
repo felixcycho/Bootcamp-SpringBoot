@@ -1,42 +1,21 @@
-networks:
-  bootcamp-network:
-    driver: bridge
+mtr-service:
+  host: 'rt.data.gov.hk'
+  version: 'v1'
+  endpoints:
+    schedule: '/transport/mtr/getSchedule.php'
 
-services:
-  postgres:
-    image: postgres:15
-    container_name: postgres-container
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: admin1234
-      POSTGRES_DB: bootcamp_2508
-      PGDATA: /var/lib/postgresql/data/pgdata15
-    networks:
-      - bootcamp-network
-    ports:
-      - "5532:5432"
-    volumes:
-      - "./pgdata:/var/lib/postgresql/data/pgdata"
-
-  redis:
-    image: redis:7
-    container_name: redis-container
-    networks:
-      - bootcamp-network
-    ports:
-      - "6479:6379"
-    volumes:
-      - "./redis_data:/data"
-
-  mtr-app:
-    build:
-      dockerfile: Dockerfile
-    image: bc-mtr-station:0.0.1
-    container_name: mtr-app
-    networks:
-      - bootcamp-network
-    ports:
-      - "8180:8080"
-
-volumes:
-  redis_data:
+spring:
+  datasource:
+    driverClassName: "org.postgresql.Driver"
+    url: "jdbc:postgresql://postgres-container:5432/bootcamp_2508"
+    username: "postgres"
+    password: "admin1234"
+  jpa:
+    show-sql: false
+    hibernate.ddl-auto: update
+  data:
+    redis:
+      host: redis-container
+      port: 6379
+      database: 0
+      timeout: 3000ms

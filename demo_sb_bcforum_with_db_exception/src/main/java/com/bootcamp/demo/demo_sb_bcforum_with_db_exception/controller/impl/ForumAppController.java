@@ -25,7 +25,7 @@ import com.bootcamp.demo.demo_sb_bcforum_with_db_exception.service.JPHService;
 @RestController
 public class ForumAppController implements ForumAppOperation {
 
-    private final UserRepository userRepository;
+  private final UserRepository userRepository;
   @Autowired
   private JPHService jphService;
 
