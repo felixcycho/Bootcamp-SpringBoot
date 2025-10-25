@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"name": "Bootcamp-SpringBoot",
+			"path": "."
+		},
+		{
+			"name": "Bootcamp-Final-Project",
+			"path": "../Bootcamp-Final-Project"
+		}
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "interactive",
+		"java.compile.nullAnalysis.mode": "disabled"
+	}
+}
